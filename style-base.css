@@ -1,0 +1,233 @@
+body {
+	margin:0;
+	font-family: "Ubuntu", -apple-system, "Segoe UI", "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	background:#C8C8C8 url(polygon.png) 0 0 repeat scroll;
+	}
+*{box-sizing:inherit;}
+/* ----------- Page de login  ------------ */
+#FullScreenCentered {	/* arriere plan qui couvre tout l'ecran */
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	min-height:100vh;
+	min-width:100vw;
+}
+#login-box {	/* fenetre de connexion */
+	padding:40px 10px 40px 10px;
+	width:400px;
+	background:white;
+	box-shadow: 0 0 2em black;
+	text-align:center;
+}
+.shadow {box-shadow: 0 0 2em black;}
+.msg-error {	/* message d'erreur */
+	padding:10px;
+	margin:10px;
+	color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+	border-radius: 4px;
+    animation: AnimationMasquee 5s forwards;
+}
+.msg-info {	/* message d'info */
+	padding:10px;
+	margin:10px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border: 1px solid #bce8f1;
+	border-radius: 4px;
+    animation: AnimationMasquee 5s forwards;
+}
+/* masquer les messages d'erreur/info */
+@keyframes AnimationMasquee {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;display: none;}
+}
+#login-box input {	/* les champs texte et le bouton */
+	padding:10px;
+	margin:10px;
+	width:60%;
+	box-sizing:content-box;
+	font-family: inherit;
+}
+
+.error.msg-error {display:block;}
+.error { /* anime la fentre en cas d'erreur */
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%, 90% {transform: translate3d(-1px, 0, 0);}
+  20%, 80% {transform: translate3d(2px, 0, 0);}
+  30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
+  40%, 60% {transform: translate3d(4px, 0, 0);}
+}
+/* ----------- interface principale  ------------ */
+/* la barre laterale dans l'interface */
+#sidebar {
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	width:250px;
+	color:#fff;
+	max-height:100vh;
+	background: linear-gradient(to bottom, #1F77D0 0%, #533ce1 100%);
+	transition: all 150ms ease-in;
+	text-align:center;
+}
+#sidebar-logo{margin: 10px 0px;}
+#sidebar ul {    list-style: none;padding-left:0}
+.sidebar-item {
+}
+.sidebar-item.actif .sidebar-lien, .sidebar-item:hover .sidebar-lien {
+	background: rgba(255, 255, 255, 0.23);
+}
+.sidebar-lien{
+    text-decoration: none;
+	margin: 5px 15px;
+	padding: 20px 15px;
+	display:block;
+	color: inherit;
+	border-radius: 4px;
+	text-transform:uppercase;
+}
+.sidebar-submenu{
+	border: 2px solid rgba(255, 255, 255, 0.23);
+	border-radius: 4px;
+	margin: 5px 15px;
+}
+.sidebar-submenu-lien{
+	padding: 10px 5px;
+	display:block;
+}
+/* la zone a coté du sidebar */
+#Panneau-principal {
+	width: calc(100vw - 250px);
+	float: right;
+}
+#Panneau-principal, #sidebar {
+	overflow: auto;
+	height: 100vh;
+}
+/* le menu horizontal en haut */
+#topnavbar {
+	z-index: 2;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 50px;
+	background: white;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	align-items:center;
+	padding:0px 20px;
+}
+.topnavbar-item {
+	margin:0px 10px;
+}
+.topnavbar-item input, .topnavbar-item select {
+	padding: 5px;
+}
+.topnavbar-lien, a {
+    text-decoration: none;
+	color: inherit;
+}
+/* la zone avec le contenu */
+#contenu {
+	padding:20px;
+}
+/* mise en forme des tableaux */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+  vertical-align: middle;
+}
+tr{background-color: #fff}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #4dabf7;}/*#6581e0*/
+th {
+  background-color: #1F77D0;
+  color: white;
+}
+.btn-img{
+	max-width: 24px;
+	height: auto;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+}.btn-img:hover{filter:invert();}
+/* mise en forme des listes de champs */
+.edit label, .edit input[type="text"], .edit input[type="password"], .edit fieldset, .edit select  {
+	display:inline-block;
+	width:32%;
+	padding:5px 0px;
+	font:inherit;
+}
+.edit input, .edit select  {
+	padding:5px 10px !important;
+	margin: 2px;
+}
+.edit fieldset, .edit select{border:0;width:60%;}
+.checkbox-list label {vertical-align:top;}
+.mask{display:none;}
+
+/* ------------- vignettes pour l'impression des comptes -------------- */
+.import-vignet { /* La vignette d'un utilisateur */
+	width:42%;
+	border:1px solid;
+	display:inline-block;
+	margin: 8px;
+	padding: 10px;
+}
+.vignet-name { /* Le nom complet de l'utilisateur */
+	text-align:center;
+	border-bottom: 1px solid;
+	padding-bottom: 16px;
+	font-weight: bold;
+}
+.vignet-grp { /* La liste des groupes utilisateurs */
+	padding-top: 16px;
+	border-top: 1px solid;
+	font-style: italic;
+	font-size:small;
+}
+.vignet-id { /* La ligne contenant l'identifiant */ }
+.vignet-pw { /* La ligne contenant le mot de passe */ }
+.vignet-label { /* Les étiquettes "identifiants" et "mot de passe" */
+	width:100px;
+	display: inline-block;
+	font-size:small;
+}
+
+/* ------------- adaptation pour les telephones -------------- */
+@media (max-width:600px) {
+	#login-box {
+		margin:unset;
+		width:80vw;
+	}
+}
+
+/* ------------- adaptation pour l'impression -------------- */
+@media print {
+	#sidebar, #topnavbar, .msg-info, .msg-error { /* virer les barres de nav */
+		display: none;
+	}
+	#Panneau-principal { /* virer la marge laterale */
+		width:unset;
+		float:unset;
+		overflow:unset;
+		height:unset;
+	}
+	#contenu {
+		padding:unset;
+	}
+}
